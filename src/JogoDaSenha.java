@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class JogoDaSenha {
     int s =0;
     int index = 0;
     List<Integer> lista = new ArrayList<Integer>();
-    List<Integer> cache = new ArrayList<Integer>();
+    HashSet<Integer> cache = new HashSet<Integer>();
     void getNumbers(){
         //classe que interage com o usuario atraves do scanner
         Scanner scanner = new Scanner(System.in);
@@ -22,92 +23,48 @@ public class JogoDaSenha {
         TestNumeroRept(x, y, z, a, b);
     }
     void TestNumeroRept(int a,int b,int c,int d,int e){
+        //acabar com a graça do jogador que jogar 5 vezes o mesmo numero, ou numero repetido
         cache.removeAll(cache);
         cache.add(a);
         cache.add(b);
         cache.add(c);
         cache.add(d);
         cache.add(e);
+        if(cache.add(b) == false){
+            System.out.println("Algum numero repetido, verifique");
+            getNumbers();
+
+        }
+        if(cache.add(c) == false){
+            System.out.println("Algum numero repetido, verifique");
+            getNumbers();
+
+        }
+        if(cache.add(d) == false){
+            System.out.println("Algum numero repetido, verifique");
+            getNumbers();
+
+        }
+        if(cache.add(e) == false){
+            System.out.println("Algum numero repetido, verifique");
+            getNumbers();
+
+        }
         s=0;
-        int s2 = 0;
         if(numeros_usados.contains(a) == false){
-            s2=0;
-            for(int l =0; l<5;l++){
-                if(a!=cache.get(l)){
-                    s2++;
-                }
-            }
-            if(s2 == 4){
-                s++;
-            }
-            else{
-                System.out.println("Algum numero repetido verifique");
-                getNumbers();
-            }
-        
+            s++;   
         }
         if(numeros_usados.contains(b) == false){
-            s2=0;
-             for(int l =0; l<5;l++){
-                if(b!=cache.get(l)){
-                    s2++;
-                }
-            }
-            if(s2 == 4){
-                s++;
-            }
-            else{
-                System.out.println("Algum numero repetido verifique");
-                getNumbers();
-            }
-            
+            s++;
         }
         if(numeros_usados.contains(c) == false){
-            s2=0;
-             for(int l =0; l<5;l++){
-                if(c!=cache.get(l)){
-                    s2++;
-                }
-            }
-            if(s2 == 4){
-                s++;
-            }
-            else{
-                System.out.println("Algum numero repetido verifique");
-                getNumbers();
-            }
-            
+            s++;        
         }
         if(numeros_usados.contains(d) == false){
-            s2=0;
-             for(int l =0; l<5;l++){
-                if(d!=cache.get(l)){
-                    s2++;
-                }
-            }
-            if(s2 == 4){
-                s++;
-            }
-            else{
-                System.out.println("Algum numero repetido verifique");
-                getNumbers();
-            }
-            
+            s++;
         }
         if(numeros_usados.contains(e) == false){
-            s2=0;
-             for(int l =0; l<5;l++){
-                if(e!=cache.get(l)){
-                    s2++;
-                }
-            }
-            if(s2 == 4){
-                s++;
-            }
-            else{
-                System.out.println("Algum numero repetido verifique");
-                getNumbers();
-            }  
+            s++;
         }
         if(s == 5){
             numeros_usados.add(a);
@@ -126,7 +83,6 @@ public class JogoDaSenha {
     }
     void fazerTentativa(int a, int b, int c, int d, int e)   {
         //classe que cria a lista e verifica os resultados, alem de criar um laço com a getnumbers
-        index +=5;
         if(lista.isEmpty() == true){
             for(int i =0;i<30;i++){
                 int number = (int) (Math.random() *100) +1;
@@ -140,19 +96,23 @@ public class JogoDaSenha {
     }
         
     if (lista.contains(a)){
-
+        index +=1;
         x++;        
     }
     if (lista.contains(b)){
+        index +=1;
         x++;
     }
     if (lista.contains(c)){
+        index +=1;
         x++;
     }
     if (lista.contains(d)){
+        index +=1;
         x++;
     }
     if (lista.contains(e)){
+        index +=1;
         x++;
     }
     if(x>5){
