@@ -14,7 +14,8 @@ public class JogoDaSenha {
     void getNumbers(){
         //classe que interage com o usuario atraves do scanner
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite 5 valores para começarmos o jogo: ");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Digite 5 valores para jogarmos: ");
         int x = scanner.nextInt();
         int y = scanner.nextInt();
         int z = scanner.nextInt();
@@ -119,16 +120,20 @@ public class JogoDaSenha {
         x=5;
     }
     getSenha();
+    
+   
+    if(x<5){
+    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("Deseja tentar novamente S ou N : ");
     Scanner scanner = new Scanner(System.in);
     String resposta = scanner.nextLine().toUpperCase();
-   
-    if(x!=5){
     if( resposta.equals("S")){
         getNumbers();
     }
     else{
+        
         System.out.println("Obrigado por jogar, você fez um total de "+x +" pontos");
+        System.exit(0);
     }}
 }
     void getContadorPesquisa(){
@@ -141,6 +146,7 @@ public class JogoDaSenha {
             System.out.println("VOCÊ ACERTOU, PARABÉNS");
             System.out.println(lista);
             getContadorPesquisa();
+            System.exit(0);
         }
         if(x!=5){
             System.out.println("Você ainda não adivinhou a senha!");
